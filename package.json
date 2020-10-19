@@ -1,0 +1,22 @@
+{
+  "name": "05cursonodejs",
+  "version": "1.0.0",
+  "description": "Dictado por Carlos Hernandez",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CLGonzalezGroh/05cursonodejs.git"
+  },
+  "keywords": [
+    "chat"
+  ],
+  "author": "Cesar Gonzalez Groh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CLGonzalezGroh/05cursonodejs/issues"
+  },
+  "homepage": "https://github.com/CLGonzalezGroh/05cursonodejs#readme"
+}
