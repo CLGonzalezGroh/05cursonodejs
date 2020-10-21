@@ -4,8 +4,9 @@ const controller = require("./controller");
 const response = require("../../network/response");
 
 router.get("/", function (req, res) {
+  const filterMessage = req.query.user || null;
   controller
-    .listMessages()
+    .listMessages(filterMessage)
     .then((messageList) => {
       response.success(req, res, messageList);
     })
@@ -39,6 +40,17 @@ router.patch("/:id", function (req, res) {
     })
     .catch((e) => {
       response.error(req, res, "Internal error", 500, e);
+    });
+});
+
+router.delete("/:id", function (req, res) {
+  controller
+    .deleteMessage(req.params.id)
+    .then(() => {
+      response.success(req, res, `Mensaje ${req.params.id} eliminado`);
+    })
+    .catch((e) => {
+      response.error(req, res, "Error interno", 500, e);
     });
 });
 
