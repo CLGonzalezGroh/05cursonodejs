@@ -31,4 +31,15 @@ router.post("/", function (req, res) {
     });
 });
 
+router.patch("/:id", function (req, res) {
+  controller
+    .updateMessage(req.params.id, req.body.message)
+    .then((data) => {
+      response.success(req, res, data);
+    })
+    .catch((e) => {
+      response.error(req, res, "Internal error", 500, e);
+    });
+});
+
 module.exports = router;

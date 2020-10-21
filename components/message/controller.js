@@ -20,7 +20,19 @@ function addMessage(user, message) {
 function listMessages() {
   return store.list();
 }
+
+function updateMessage(id, message) {
+  return new Promise(async (resolve, reject) => {
+    if (!id || !message) {
+      return reject("Invalid data");
+    }
+    const result = await store.update(id, message);
+    resolve(result);
+  });
+}
+
 module.exports = {
   addMessage,
   listMessages,
+  updateMessage,
 };
