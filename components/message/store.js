@@ -1,13 +1,25 @@
-const list = [];
+const db = require("mongoose");
+const Model = require("./model");
+
+db.Promise = global.Promise;
+db.connect(
+  "mongodb+srv://user:user1234@cluster0.iltyu.mongodb.net/telegrom?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
+
+console.log("[db] conectada con exito");
 
 function addMessage(message) {
-  list.push(message);
+  const myMessage = new Model(message);
+  myMessage.save();
 }
 
-function getMessages() {
-  return new Promise((resolve, reject) => {
-    resolve(list);
-  });
+async function getMessages() {
+  const messages = await Model.find();
+  return messages;
 }
 
 module.exports = {
