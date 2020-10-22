@@ -9,7 +9,6 @@ const mySchema = new Schema({
       ref: "User",
     },
   ],
-
   date: Date,
 });
 

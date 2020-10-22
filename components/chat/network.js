@@ -3,8 +3,8 @@ const router = express.Router();
 const controller = require("./controller");
 const response = require("../../network/response");
 
-router.get("/", function (req, res) {
-  const filterChat = req.query.id || null;
+router.get("/:userId", function (req, res) {
+  const filterChat = req.params.userId || null;
   controller
     .listChats(filterChat)
     .then((chatList) => {
@@ -22,13 +22,7 @@ router.post("/", function (req, res) {
       response.success(req, res, fullChat, 201);
     })
     .catch((e) => {
-      response.error(
-        req,
-        res,
-        "Informacion invalida",
-        400,
-        "Error en el controlador"
-      );
+      response.error(req, res, "Informacion invalida", 400, e);
     });
 });
 

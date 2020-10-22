@@ -2,12 +2,12 @@ const store = require("./store");
 
 function addChat(users) {
   return new Promise((resolve, reject) => {
-    if (!users) {
+    if (!users || !Array.isArray(users)) {
       console.error("[messageController:] No hay usuarios");
       return reject("Los datos son incorrectos");
     } else {
       const fullChat = {
-        users,
+        users: users,
         date: new Date(),
       };
       store.add(fullChat);

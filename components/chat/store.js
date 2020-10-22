@@ -5,11 +5,11 @@ function addChat(chat) {
   myChat.save();
 }
 
-async function getChats(filterChat) {
+function getChats(filterChat) {
   return new Promise((resolve, reject) => {
     let filter = {};
     if (filterChat !== null) {
-      filter = { _id: filterChat };
+      filter = { users: filterChat };
     }
     Model.find(filter)
       .populate("users")
